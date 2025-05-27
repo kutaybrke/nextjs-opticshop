@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite" // veya "postgresql" / "mysql"
+  url      = "file:./dev.db" // SQLite için. Diğer DB'ler için uygun URL'yi gir.
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String
+  email    String @unique
+  password String
+  createdAt DateTime @default(now())
+}
